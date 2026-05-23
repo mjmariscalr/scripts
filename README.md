@@ -1,4 +1,4 @@
-# Scripts Collection
+# Scripts
 
 Repositorio personal donde almaceno scripts simples relacionados con automatización, pentesting, administración de sistemas y aprendizaje de ciberseguridad.
 
@@ -12,14 +12,9 @@ Dependiendo del script:
 
 ## Contenido
 
-Ejemplos de scripts que pueden encontrarse aquí:
+### [SMBfuzz](https://github.com/mjmariscalr/scripts/tree/main/smbfuzz)
 
-- Enumeración básica
-- Escaneo de puertos
-- Automatización de comandos
-- Parsing de archivos/logs
-- Scripts para CTFs y laboratorios
-- Utilidades para Linux
+Script en Bash para enumerar recursos compartidos SMB en un host objetivo utilizando autenticación anónima.
 
 ## Aviso
 
