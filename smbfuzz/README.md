@@ -41,7 +41,7 @@ Opciones:
 Ejemplo
 
 ```bash
-bash smb_enum.sh -o 192.168.1.10 -s shares.txt
+bash smbfuzz.sh -o 192.168.1.10 -s shares.txt
 [+] FOUND: public
 [!] NO ACCESS: finance
 [-] NOT FOUND: backup
