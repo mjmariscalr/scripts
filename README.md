@@ -12,9 +12,7 @@ Dependiendo del script:
 
 ## Contenido
 
-### [SMBfuzz](https://github.com/mjmariscalr/scripts/tree/main/smbfuzz)
-
-Script en Bash para enumerar recursos compartidos SMB en un host objetivo utilizando autenticación anónima.
+- [**SMBfuzz:**](https://github.com/mjmariscalr/scripts/tree/main/smbfuzz) enumera recursos compartidos SMB utilizando autenticación anónima.
 
 ## Aviso
 
