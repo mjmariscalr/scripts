@@ -26,7 +26,7 @@ Es necesario tener instaladas las siguientes herramientas:
 ## Uso
 
 ```bash
-bash smb_enum.sh -o <objetivo> -s <wordlist>
+bash smbfuzz.sh -o <objetivo> -s <wordlist>
 ```
 
 Opciones:
