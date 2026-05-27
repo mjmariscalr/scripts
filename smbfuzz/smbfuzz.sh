@@ -47,7 +47,7 @@ if [[ ! -f "$SHARES" ]]; then
 	exit 1
 fi
 
-if ! ncat -zw2 "$HOST" 445; then
+if ! nc -zw2 "$HOST" 445; then
 	echo "[!] CONNECTION FAILED."
 	exit 1
 fi
