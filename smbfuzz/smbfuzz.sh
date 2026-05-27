@@ -1,13 +1,15 @@
 #!/bin/bash
 
 COUNT=0
+VERBOSE=false
 HELP="Use: bash $0 <option>
 
 Options:
 	-o     Target IP address or domain.
 	-s     Wordlist of share names.
+	-v     Verbose.
 	-h     Display this help message.
-	-v     Display the script version."
+	-V     Display the script version."
 
 if [[ $# -eq 0 ]];then
 	echo "$HELP"
@@ -16,8 +18,8 @@ fi
 
 while getopts "vhs:o:" arg; do
 	case $arg in
-		v)
-			echo "$0 1.0"
+		V)
+			echo "$0 1.1.0"
 			exit 0
 			;;
 		h)
@@ -29,6 +31,9 @@ while getopts "vhs:o:" arg; do
 			;;
 		o)
 			HOST=$OPTARG
+			;;
+		v)
+			VERBOSE=true
 			;;
 		*)
 			echo "Invalid option: -$arg"
@@ -42,7 +47,7 @@ if [[ ! -f "$SHARES" ]]; then
 	exit 1
 fi
 
-if ! nc -zw2 "$HOST" 445; then
+if ! ncat -zw2 "$HOST" 445; then
 	echo "[!] CONNECTION FAILED."
 	exit 1
 fi
@@ -51,9 +56,13 @@ while read -r share; do
 	output=$(smbclient "//$HOST/$share" -N -c "ls" 2>&1)
 
 	if echo "$output" | grep -q "NT_STATUS_BAD_NETWORK_NAME"; then
-		echo "[-] NOT FOUND: $share"
+		if "$VERBOSE"; then
+			echo "[-] NOT FOUND: $share"
+		fi
 	elif echo "$output" | grep -q "NT_STATUS_ACCESS_DENIED"; then
-		echo "[!] NO ACCESS: $share"
+		if "$VERBOSE"; then
+			echo "[!] NO ACCESS: $share"
+		fi
 	else
 		echo "[+] FOUND: $share"
 		((COUNT++))
